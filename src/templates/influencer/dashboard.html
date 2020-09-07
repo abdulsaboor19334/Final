@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+    <div class="row">
+      <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+        <div class="card card-profile shadow">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <a href="#">
+                  <img src="{% static 'img/woman.png' %}" class="rounded-circle" width=300px>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+            
+          </div>
+          <div class="card-body pt-0 pt-md-4">
+            <div class="row">
+              <div class="col">
+                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                  <div class="text-center">
+                        <h3 class="mt-3" style="font-size:25px; font-weight:300;">Influencer's Name</h3>
+                    Current Earning: <p class="badge bg-primary text-white" style="font-size:20px;">220,000 Rs</p><br>
+                    Badges: <br>
+                    <div class="row" style="font-size:40px;">
+                            <i class="fas fa-trophy m-3"></i>
+                            <i class="fas fa-award m-3"></i>
+                            <i class="fas fa-medal m-3"></i>
+                    </div><br>
+                    Social Media Assets
+                    <a href="#">(Requirements)</a>
+                    <a href="#">
+                      <div class="card m-3 p-3 bg-gradient-success text-white" style="font-size:70px;" data-toggle="tooltip" data-placement="top" title="Connected">
+                          <i class="fab fa-facebook"></i>
+                      </div>
+                  </a>
+                  <a href="#">
+                      <div class="card m-3 p-3 bg-gradient-warning text-white" style="font-size:70px;" data-toggle="tooltip" data-placement="top" title="You don't fulfill the requirements">
+                          <i class="fab fa-twitter"></i>
+                      </div>
+                  </a>
+                  <a href="#">
+                      <div class="card m-3 p-3 text-orange" style="font-size:70px;" data-toggle="tooltip" data-placement="top" title="Click to connect">
+                          <i class="fab fa-instagram"></i>
+                      </div>
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8 order-xl-1">
+        <div class="card pt-5 pb-5 text-center">
+          <h2>Pending Tasks</h2>
+            <small>Tasks which are not yet verified.</small>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col" class="sort" data-sort="name">Meme Name</th>
+                      <th scope="col" class="sort" data-sort="campaign">Campaign</th>
+                      <th scope="col" class="sort" data-sort="time">Sent Date</th>
+                      <th scope="col" class="sort" data-sort="earning">Campaign Status</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="list">
+                    <tr>
+                      <th scope="row">
+                            Hello World
+                      </th>
+                      <td class="budget">
+                        Foodpanda Campaign
+                      </td>
+                      <td>
+                        12 Hours ago
+                    </td>
+                      <td>
+                        <div class="text-center">
+                          <span class="completion mr-2">Running</span>
+                        </div>
+                      </td>
+                      <td class="text-right">
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">View Meme</a>
+                            <a class="dropdown-item" href="#">Delete</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <hr/>
+            <h2>All Tasks</h2>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col" class="sort" data-sort="name">Meme Name</th>
+                      <th scope="col" class="sort" data-sort="campaign">Campaign</th>
+                      <th scope="col" class="sort" data-sort="status">Status</th>
+                      <th scope="col" class="sort" data-sort="earning">Earning</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="list">
+                    <tr>
+                      <th scope="row">
+                            Hello World
+                      </th>
+                      <td class="budget">
+                        Foodpanda Campaign
+                      </td>
+                      <td>
+                            <span class="badge bg-success text-white align-middle" style="font-size:14px;">Accepted</span>
+                    </td>
+                      <td>
+                        <div class="text-center">
+                          <span class="completion mr-2">500 Rs</span>
+                        </div>
+                      </td>
+                      <td class="text-right">
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">View Meme</a>
+                            <a class="dropdown-item" href="#">Delete</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+      </div>
+  </div>
+</div>
+                
+{% endblock %}

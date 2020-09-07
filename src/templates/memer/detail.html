@@ -1,0 +1,128 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+
+{% block content %}
+<div class="card p-5">
+  <div class="row">
+    <div class="col-8">
+      <div class="card-body" style="margin:0;">
+        <h2
+          style="
+            margin: 0;
+            font-weight: 100;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size:35px;
+          "
+        >
+          Campaign Name
+        </h2>
+        <p>by Company Name</p>
+        
+        
+        
+        </div>
+    </div>
+    <div class="col-4" style="text-align: right;">
+
+      <div class="progress m-3" style="height:70px; font-size:15px;">
+        <div
+          class="progress-bar bg-gradient-info"
+          role="progressbar"
+          style="width: 46%;"
+          aria-valuenow="46"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          Memes Needed(23)
+        </div>
+        <div
+          class="progress-bar bg-gradient-danger"
+          role="progressbar"
+          style="width: 54%;"
+          aria-valuenow="54"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          Memes Accepted(27)
+        </div>
+        
+      </div>
+      <p class="text-center">
+          <small>
+            How many memes required?
+          </small>
+    </p>  
+  
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>Add the ability to submit memes here</h1>
+
+        <h1>Your submissions<span class="badge bg-primary text-white ml-3" style="font-size:20px;">
+            3
+       </span></h1><br>
+    </div>
+    
+    <div class="col-auto">
+        <div class="card">
+            <img src="https://mememarketing.pk/wp-content/uploads/2020/04/list-300x300.png" class="card-img-top" alt="..." style="height:300px;">
+            <div class="card-body">
+              <h2 class="card-title">Meme Title</h2>
+              <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Delete</a>
+                  <a class="dropdown-item" href="#">View Fullscreen</a>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-auto">
+        <div class="card bg-gradient-success">
+            <img src="https://mememarketing.pk/wp-content/uploads/2020/04/list-300x300.png" class="card-img-top" alt="..." style="height:300px;">
+            <div class="card-body">
+              <h2 class="card-title">Meme Title ✅</h2>
+              <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Delete</a>
+                  <a class="dropdown-item" href="#">View Fullscreen</a>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-auto">
+        <div class="card bg-gradient-warning">
+            <img src="https://mememarketing.pk/wp-content/uploads/2020/04/list-300x300.png" class="card-img-top" alt="..." style="height:300px;">
+            <div class="card-body">
+              <h2 class="card-title">Meme Title ❌</h2>
+              <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Delete</a>
+                  <a class="dropdown-item" href="#">View Fullscreen</a>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+
+{% endblock content %}

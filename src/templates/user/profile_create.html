@@ -1,0 +1,237 @@
+{% extends 'wizard/base.html' %} 
+{% load static %}
+{% block styles %}
+<style>
+    .primarycard {
+        background: linear-gradient(to right, #5e72e4, #8965e0); 
+        font-size:120px; 
+        color:snow;
+        height: 350px;
+        vertical-align: auto;
+        font-weight: 100;
+    }
+    .primarycard:hover {
+        background: linear-gradient(to right, #4858b3, #694eaa);
+    }
+    .secondarycard {
+        background: linear-gradient(to right, rgb(144, 2, 2), rgb(112, 8, 10));
+        font-size: 120px;
+        color: snow;
+        height: 350px;
+        vertical-align: auto;
+        font-weight: 100;
+
+    }
+
+    .secondarycard:hover {
+        background: linear-gradient(to right, rgb(110, 1, 1), rgb(104, 5, 7))
+    }
+</style>
+{% endblock %}
+                {% block content %}
+
+                <div class="wizard-container">
+
+                    <div class="card wizard-card" data-color="azure" id="wizardProfile">
+                        <form action="." method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                            <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
+
+                            <div class="wizard-header text-center">
+                                <h3 class="wizard-title">Create your profile</h3>
+                            </div>
+
+                            <div class="wizard-navigation">
+                                <div class="progress-with-circle">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+                                        aria-valuemax="3" style="width: 21%;"></div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="#about" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-user"></i>
+                                            </div>
+                                            About
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#account-type" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-id-badge"></i>
+                                            </div>
+                                            Account Type
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#welcome" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-map"></i>
+                                            </div>
+                                            Welcome
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane" id="about">
+                                    <div class="row">
+                                        <h5 class="info-text"> Please tell us more about yourself.</h5>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <img src="{% static 'img/default-avatar.jpg' %}" class="picture-src"
+                                                        id="wizardPicturePreview" title="" />
+                                                    <input type="file" id="wizard-picture">
+                                                </div>
+                                                <h6>Choose Picture</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>First Name <small>(required)</small></label>
+                                                <input name="firstname" type="text" class="form-control"
+                                                    placeholder="Your first name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Last Name <small>(required)</small></label>
+                                                <input name="lastname" type="text" class="form-control"
+                                                    placeholder="Your last name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Phone Number<small>(required)</small></label>
+                                                <input name="phonenumber" type="number" class="form-control"
+                                                    placeholder="Your phone number (e.g 0312-972XXXX)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="account-type">
+                                    <h5 class="info-text">Select Account Type</h5>
+                                    <div class="row">
+                                        <div class="col-sm-10 col-sm-offset-2">
+                                            <div class="cc-selector">
+                                                        <input id="business" type="radio" name="type" value="business"
+                                                            v-model="type" />
+                                                        <label class="drinkcard-cc business" for="business"></label>
+                                                        <input id="memer" type="radio" name="type" value="memer"
+                                                            v-model="type" />
+                                                        <label class="drinkcard-cc memer" for="memer"></label>
+                                                        <input id="influencer" type="radio" name="type"
+                                                            value="influencer" v-model="type" />
+                                                        <label class="drinkcard-cc influencer" for="influencer"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="welcome">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text"> Welcome to Meme Marketing </h5>
+                                        </div>
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                            <div v-if="type=='business'">
+                                                <p>
+                                                    You have registered as a business. Please provide the following information:
+                                                </p>
+                                                <label for="company-name">Company Name</label>
+                                                <input type="text" class="form-control" name="company-name" placeholder="Enter your company name">
+                                                <hr/>
+                                                
+                                            </div>
+                                            <div v-else-if="type=='memer'">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <a href="#" style=" text-decoration: none;">
+                                                            <div class="card p-5 text-center primarycard">
+                                                                <p style="font-size: 40px;">Click here to</p>
+                                                                <i class="fas fa-laugh-squint"></i>
+                                                                <p style="font-size: 40px;">start Posting</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <a href="#" style=" text-decoration: none;">
+                                                            <div class="card p-5 text-center secondarycard">
+                                                                <p style="font-size: 40px;">Meme Examples</p>
+                                                                <i class="fas fa-heart"></i>
+                                                                <p style="font-size: 40px;">we love</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div v-else-if="type=='influencer'">
+                                                <p>
+                                                    Lets start by connecting your social media accounts, click a platform and login with your account to give the required permissions.
+                                                    Click 
+                                                    <a href="#">
+                                                        here
+                                                    </a> to read the requirements.
+                                                </p>
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">
+                                                        <a href="#">
+                                                            <div class="card m-3 p-3" style="font-size:70px; background-color: #3B5998; color:snow;" >
+                                                                <i class="fab fa-facebook"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-4 text-center">
+                                                        <a href="#">
+                                                            <div class="card m-3 p-3" style="font-size:70px; background-color: #1DA1F2; color:snow;" >
+                                                                <i class="fab fa-twitter"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-4 text-center">
+                                                        <a href="#">
+                                                            <div class="card m-3 p-3" style="font-size:70px; background-color: #F77737; color:snow;" >
+                                                                <i class="fab fa-instagram"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div v-else>
+                                                Please select an account type first
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next'
+                                        value='Next' />
+                                    <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd'
+                                        name='finish' value='Finish' />
+                                </div>
+
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-default btn-wd' name='previous'
+                                        value='Previous' />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
+            </div>
+        </div><!-- end row -->
+    </div> <!--  big container -->
+</body>
+
+<script>
+    var app = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app',
+        data: {
+            type: ''
+
+        },
+    })
+</script>
+{% endblock content %}

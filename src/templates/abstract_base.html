@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% include 'asset/head.html' %}
+<body>
+{% block side %}
+{% endblock %}
+  <!-- Main content -->
+  {% block top %}
+
+{% endblock %}
+
+          <!-- Card stats -->
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+      {% block content %}
+      {% endblock content %}
+      <!-- Footer -->
+      {% block footer %}
+{% endblock %}
+  </div>
+  {% include 'asset/scripts.html' %}
+</body>
+
+</html>

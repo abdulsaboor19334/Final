@@ -1,0 +1,24 @@
+{% extends 'abstract_base.html' %}
+
+{% load static %}
+{% block content %}
+
+<style>
+  .navbar-horizontal .navbar-brand img
+{
+    height: 65px;
+}
+</style>
+<body class="bg-default">
+  <!-- Navbar -->
+  {% include 'staticpages_asset/header.html' %}
+
+    <!-- Page content -->
+
+    <div class="container mt--7 pb-5">
+      {% block pagecontent %}
+      {% endblock pagecontent %}
+    </div>
+{% include 'staticpages_asset/footer.html' %}
+  {% endblock content %}
+  

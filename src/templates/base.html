@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% include 'asset/head.html' %}
+<body>
+{% block side %}
+{% include 'asset/side.html' %}
+{% endblock %}
+  <!-- Main content -->
+  {% block top %}
+  <div class="main-content" id="panel">
+    
+{% include 'asset/top.html' %}
+    <!-- Header -->
+    <!-- Header -->
+{% include 'asset/bread.html' %}
+{% endblock %}
+
+          <!-- Card stats -->
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      {% block content %}
+      {% endblock content %}
+      <!-- Footer -->
+      {% block footer %}
+{% include 'asset/footer.html' %}
+{% endblock %}
+    </div>
+  </div>
+  {% include 'asset/scripts.html' %}
+</body>
+
+</html>

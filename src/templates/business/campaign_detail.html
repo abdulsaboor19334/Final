@@ -1,0 +1,225 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+
+{% block content %}
+<div class="card p-5">
+  <div class="row">
+    <div class="col-8">
+      <div class="card-body" style="margin:0;">
+        <h2
+          style="
+            margin: 0;
+            font-weight: 100;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size:35px;
+          "
+        >
+          Campaign Name
+          <span
+            class="badge badge-danger"
+            style="font-size: 22px; font-weight: 100;"
+          >
+            Unpaid
+          </span>
+        </h2>
+        <p>by Company Name</p>
+        
+        <h2 class="display-3 text-center">
+            Results
+        </h2>
+        <div class="row">
+            <div class="col-6">
+                <div class="card" style="border:solid; border-width:1px; border-color:#3b5998; border-radius:5px">
+                    <div class="card-header">
+                        <h4 style="margin:0; font-size:30px; font-weight:100;">Total Reach</h4>
+                    </div>
+                    <div class="card-body bg-default">
+                        <div class="chart" style="height:200px;">
+                                <!-- Chart wrapper -->
+                                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card" style="border:solid; border-width:1px; border-color:#3b5998; border-radius:5px">
+                    <div class="card-header">
+                        <h4 style="margin:0; font-size:30px; font-weight:100;">Total Engagement</h4>
+                    </div>
+                    <div class="card-body bg-default">
+                        <div class="chart" style="height:200px;">
+                                <!-- Chart wrapper -->
+                                <canvas id="chart-bars" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-block ml-3 mb-3 mr-3" style="font-size:20px; font-weight:100;" data-toggle="modal" data-target="#exampleModal">
+            View individual posts
+        </button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title mt-3 ml-3" id="exampleModalLabel">Individual Posts</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                          <thead class="thead-light">
+                            <tr>
+                              <th scope="col" class="sort" data-sort="influencer">Influencer</th>
+                              <th scope="col" class="sort" data-sort="platform">Platform</th>
+                              <th scope="col" class="sort" data-sort="id">Date</th>
+                              <th scope="col" class="sort" data-sort="reach">Reach</th>
+                              <th scope="col" class="sort" data-sort="postLink">Post Link</th>
+                              <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody class="list">
+                            <tr>
+                              <th scope="row">
+                                <div class="media align-items-center">
+                                  <div class="media-body">
+                                    <span class="name mb-0 text-sm">Arham Says</span>
+                                  </div>
+                                </div>
+                              </th>
+                              <td class="budget text-primary" style="font-size:20px;">
+                                <i class="fab fa-facebook-f"></i>
+                              </td>
+                              <td>
+                                <span class="budget">
+                                  <span class="status">20 March 2020</span>
+                                </span>
+                              </td>
+                              <td class="budget">
+                                48,000 Reach
+                              </td>
+                              <td>
+                                <a class="btn btn-primary" href="https://www.facebook.com">
+                                    View Post 
+                                </a>
+                              </td>
+                              <td class="text-right">
+                                <div class="dropdown">
+                                  <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <h2 class="display-3 text-center">
+            Estimates
+            <small style="font-size:11px;">
+                (When campaign is running, results will appear here.)
+            </small>
+        </h2>
+        <div class="row">
+            <div class="col-6">
+                <div class="card" style="border:solid; border-width:1px; border-color:#3b5998; border-radius:5px">
+                    <div class="card-header">
+                        <h4 style="margin:0; font-size:30px; font-weight:100;">Total Reach</h4>
+                    </div>
+                    <div class="card-body bg-default">
+                        <div class="chart" style="height:200px;">
+                                <!-- Chart wrapper -->
+                                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card" style="border:solid; border-width:1px; border-color:#3b5998; border-radius:5px">
+                    <div class="card-header">
+                        <h4 style="margin:0; font-size:30px; font-weight:100;">Total Engagement</h4>
+                    </div>
+                    <div class="card-body bg-default">
+                        <div class="chart" style="height:200px;">
+                                <!-- Chart wrapper -->
+                                <canvas id="chart-bars" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="col-4" style="text-align: right;">
+      <h2 class="display-1 p-2 bg-primary text-center" style="margin: 15px; font-weight:100; font-size:25px; border-radius: 5px; color:white;">
+        Budget:
+          
+            450,000 Rs
+      </h2>
+
+      <div class="progress m-3" style="height:20px;">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 30%; background-color: #3b5998;"
+          aria-valuenow="30"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          Facebook
+        </div>
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 30%; background-color: #dd2a7b;"
+          aria-valuenow="30"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          Instagram
+        </div>
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 40%; background-color: #00acee;"
+          aria-valuenow="40"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          Twitter
+          
+        </div>
+      </div>
+      <p class="text-center">
+          <small>
+            Budget distribution by platform
+          </small>
+    </p>  
+  
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
