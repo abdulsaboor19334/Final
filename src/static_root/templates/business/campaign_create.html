@@ -1,0 +1,231 @@
+{% extends 'wizard/base.html' %}
+
+{% load static %}
+
+
+{% block home %}
+<a href="/" class="btn" style="position:absolute; left: 20px; top:20px; color: indigo; font-size:16px; background-color:ivory; font-weight: 300;" >
+    <i class="ti-arrow-left"></i>
+            Return Home
+</a>
+{% endblock %}
+
+{% block content %}
+                <!--      Wizard container        -->
+                <div class="wizard-container">
+                    <div class="card wizard-card" data-color="azure" id="wizard">
+                        <form action="." method="POST">{% csrf_token %}
+                            <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
+
+                            <div class="wizard-header">
+                                <h3 class="wizard-title">Launch Campaign!</h3>
+                                <p class="category"></p>
+                            </div>
+                            <div class="wizard-navigation">
+                                <div class="progress-with-circle">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+                                        aria-valuemax="4" style="width: 15%;"></div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="#basics" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-agenda"></i>
+                                            </div>
+                                            Basics
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#budget" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-money"></i>
+                                            </div>
+                                            Budget
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#memes" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-face-smile"></i>
+                                            </div>
+                                            Memes 😂
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#estimates" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-bar-chart"></i>
+                                            </div>
+                                            Estimates
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane" id="basics">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text"> Let's start with the basic details</h5>
+                                        </div>
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Company Name</label>
+                                                <input type="text" class="form-control" id="companyName" name='business'
+                                                    placeholder="What is your business called?">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Campaign Name</label><br>
+                                                <input type="text" class="form-control" id="campaignName" name='campaign'
+                                                    placeholder="Give a name to your campaign">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="budget">
+                                    <h5 class="info-text">Find your ideal budget</h5>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label for="facebook">Facebook<span class="badge"
+                                                        style="background-color: #3B5998; margin-left:10px;">[[facebook]]
+                                                        Rs</span></label>
+                                                <input type="range" class="form-control-range" id="facebook" name='fb_budget' min=5000
+                                                    max=1000000 v-model=facebook step=1000>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="instagram">Instagram</label><span class="badge"
+                                                    style="background-color: #F58529; margin-left:10px;">[[instagram]]
+                                                    Rs</span>
+                                                <input type="range" class="form-control-range" id="instagram" name='insta_budget' min=5000
+                                                    max=500000 v-model=instagram step=1000>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="twitter">Twitter</label><span class="badge"
+                                                    style="background-color: #00acee; margin-left:10px;">[[twitter]]
+                                                    Rs</span>
+                                                <input type="range" class="form-control-range" id="twitter" name='twitter_budget' min=5000
+                                                    max=500000 v-model=twitter step=1000>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="card" style="border-style: solid; color:#0145b8;">
+                                                <div class="card-header" style="margin:10px;">
+                                                    Total Budget:
+                                                </div>
+                                                <div class="card-footer" style="margin:10px;">
+                                                    [[total_budget()]] Rs
+                                                </div>
+                                            </div>
+                                            <div class="card" style="background-color: #0145b8; color: white;">
+                                                <div class="card-header" style="margin:10px;">
+                                                    Estimated Reach:
+                                                </div>
+                                                <div class="card-footer" style="margin:10px;">
+                                                    [[estimated_reach()]] people
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="memes">
+                                    <h5 class="info-text">Meme Details </h5>
+                                    <div class="form-check text-center">
+                                        <label class="form-check-label" for="memeService">
+                                            Do you want to use our meme service?
+                                        </label>
+                                        <input class="form-check-input" type="checkbox" v-model="memes"
+                                            id="memeService">
+                                    </div>
+                                    <div v-show="memes">
+                                        <div class="text-center">
+                                            <div class="cc-selector">
+                                                <input id="package1" type="radio" name="package" value="1" v-model="memePackage"/>
+                                                <label class="drinkcard-cc package1" for="package1"></label>
+                                                <input id="package2" type="radio" name="package" value="2" v-model="memePackage"/>
+                                                <label class="drinkcard-cc package2"for="package2"></label>
+                                            </div>
+                                            <div class="form-group" style="margin-left:50px; margin-right:50px;">
+                                                <label for="description">Description</label>
+                                                <textarea class="form-control" id="description" rows="3" placeholder="Enter instructions for our memers"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="estimates">
+                                    <div class="row">
+                                        <h5 class="info-text">Estimated stats based on your choices</h5>
+                                        <div class="col-sm-6 col-sm-offset-1">
+                                            <div class="form-group">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next'
+                                        value='Next' />
+                                    <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd'
+                                        name='finish' value='Finish' />
+                                </div>
+
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-default btn-wd' name='previous'
+                                        value='Previous' />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
+            </div>
+        </div> <!-- row -->
+    </div> <!--  big container -->
+    </div>
+
+</body>
+
+<script>
+    var app = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app',
+        data: {
+            facebook: 0,
+            instagram: 0,
+            twitter: 0,
+            facebook_cpr: 0.11,
+            instagram_cpr: 0.37,
+            twitter_cpr: 0.24,
+            memes: false,
+            memePackage: '',
+        },
+        methods: {
+            total_budget: function () {
+                var total = Number(this.facebook) + Number(this.instagram) + Number(this.twitter)
+                return total
+            },
+            reset_budget: function () {
+                this.facebook = 0;
+                this.instagram = 0;
+                this.twitter = 0;
+            },
+            estimated_reach: function () {
+                var est = (Number(this.facebook) / Number(this.facebook_cpr)) +
+                    (Number(this.twitter) / Number(this.twitter_cpr)) +
+                    (Number(this.instagram) / Number(this.instagram_cpr))
+                return Math.round(est)
+            }
+        }
+    })
+</script>
+
+{% endblock content %}
