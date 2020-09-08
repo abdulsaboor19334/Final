@@ -2,6 +2,10 @@ from django.shortcuts import render
 from business.models import Campaign
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from uuid import uuid4
+from django.http import JsonResponse
+
+
 
 
 @login_required()
@@ -38,5 +42,17 @@ def campaign_create(request):
 
 
 @login_required()
-def campaign_detail(request):
+def campaign_detail(request, id):
     return render(request, 'business/campaign_detail.html', {})
+
+@login_required()
+def campaign_list(request):
+    campaign = Campaign.objects.filter(business=request.user)
+    context = {
+        'campaigns':campaign
+    }
+    return render(request, 'business/campaign_list.html', context)
+
+def fullfill(request):
+    rand_token = uuid4()
+    return JsonResponse(rand_token)
