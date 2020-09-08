@@ -10,6 +10,7 @@ from django.http import JsonResponse
 
 @login_required()
 def dashboard(request):
+    print(request.user.profile.is_business)
     campaigns = Campaign.objects.filter(business=request.user)
     context = {
         'campaigns': campaigns,
